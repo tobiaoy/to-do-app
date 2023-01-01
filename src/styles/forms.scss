@@ -1,0 +1,176 @@
+@import "core"; 
+// this is the styling for the task and project forms
+
+.form-overlay{
+    @include centeredBox(row);
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    //justify-content: center;
+    //align-items: center;
+    @include copyFont(1.5rem, inherit);
+
+    form{
+       @include centeredBox(column);
+       gap: 2rem;
+       padding: 4rem;
+       border-style: solid;
+       border-radius: 0.5rem;
+       border-width: thin;
+       background-color: #a3c9a8;
+
+       div{
+        //@include centeredBox(row);
+        //gap: 2rem;
+
+
+        input, select{
+            padding: 1rem 2rem;
+            border-style: none;
+            @include copyFont(1.25rem, lighter);
+        }
+
+        label{
+            @include copyFont(1.5rem, inherit);
+        }
+
+        textarea{
+            padding: 1rem 2.5rem;
+            border-style: none;
+            @include copyFont(1.25rem, lighter);
+            width: 20rem;
+            height: 7rem;
+        }
+
+       }
+    }
+}
+
+.form-title{
+    @include titleFont(2rem, inherit);
+    text-decoration: underline;
+}
+
+//project form
+#project-form-confirm{
+    background-color: lightseagreen;
+    opacity: 0.8;
+    color: white;
+    width: 12rem;
+    border-radius: 0.5rem;
+}
+
+#project-form-cancel{
+    background-color: $red;
+    color: white;
+    width: 12rem;
+    border-radius: 0.5rem;
+    opacity: 0.8;
+}
+
+#project-form{
+    padding: 3.5rem;
+}
+
+#project-form-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 100%;
+
+    input{
+        border-radius: 0.5rem;
+    }
+}
+
+#project-form-btn-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    input{
+        border-radius: 0.5rem;
+        transition: background-color 0.5s;
+    }
+
+    input:hover{
+        cursor: pointer;
+        opacity: 1;
+    }
+}
+
+//task form
+#task-form-confirm{
+    background-color: lightseagreen;
+    opacity: 0.8;
+    color: white;
+    width: 12rem;
+    border-radius: 0.5rem;
+}
+
+#task-form-cancel{
+    background-color: $red;
+    color: white;
+    width: 12rem;
+    border-radius: 0.5rem;
+    opacity: 0.8;
+}
+
+#task-form{
+    padding: 5.5rem;
+}
+
+#task-form-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.task-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 100%;
+
+    input, textarea, select{
+        border-radius: 0.5rem;
+        width: 100%;
+    }
+}
+
+#task-form-btn-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    input{
+        border-radius: 0.5rem;
+        transition: background-color 0.5s;
+    }
+
+    input:hover{
+        cursor: pointer;
+        opacity: 1;
+    }
+}

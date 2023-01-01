@@ -1,0 +1,94 @@
+// this is the styling for rendered tasks
+@import "core"; 
+@import "../support/scss/_variables.scss";
+
+
+.rendered-task{
+    display: grid;
+    grid-template-areas: 
+    'title title title btn'
+    'info info info btn'
+    ;
+    border-style: solid;
+    border-width: thick;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    column-gap: 4rem;
+    row-gap: 1rem;
+    width: 45vw;
+    // gap: 1rem;
+}
+
+.render-task-title{
+    grid-area: title;
+    @include titleFont(2.5rem, bolder);
+    color: $dark-blue;
+}
+
+.render-task-info{
+    grid-area: info;
+    @include centeredBox(row);
+    justify-content: flex-start;
+    @include copyFont(1.25rem, inherit);
+    gap: 1.5rem;
+    color: $dark-blue;
+}
+
+.render-task-btn-set{
+    grid-area: btn;
+    gap: 0.5rem;
+    @include centeredBox(column);
+}
+
+.completed-tasks{
+    text-decoration: line-through;
+}
+
+.high-priority{
+    border-color: $red;
+}
+
+.mid-priority{
+    border-color: $amber;
+}
+
+.low-priority{
+    border-color: $dark-blue;
+}
+
+.complete-icon{
+    @include fa-icon-solid($fa-var-check);
+}
+
+.uncomplete-icon{
+    @include fa-icon-solid($fa-var-rotate-backward);
+    
+}
+
+.edit-icon{
+    @include fa-icon-solid($fa-var-gear);
+}
+
+.delete-icon{
+    @include fa-icon-solid($fa-var-trash);
+}
+
+.task-btn{
+    border-style: none;
+    background-color: $white;
+    
+
+    i{
+        color: $dark-blue;
+        opacity: 0.7;
+        font-size: 1.5rem;
+    }
+
+    i:hover{
+        opacity: 1;
+    }
+}
+
+.task-btn:hover{
+    cursor: pointer;
+}

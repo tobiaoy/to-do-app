@@ -1,0 +1,246 @@
+// this is the core styling for the page
+//font import
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300;400;600&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+// importing core styling file
+@import "../support/scss/fontawesome.scss";
+
+// our project needs Solid + Brands
+@import "../support/scss/solid.scss";
+@import "../support/scss/brands.scss";
+//@import "../support/scss/sharp-solid.scss";
+
+$fa-font-path : "~../support/webfonts";
+
+//colors
+$red: #E63946;
+$white: #F1FAEE;
+$light-blue: #A8DADC;
+$blue: #457B9D;
+$dark-blue: #1D3557;
+$amber: #FB8D22;
+
+//mixins
+@mixin centeredBox ($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin leftBox(){
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 1.5rem;
+    gap: 1rem;
+}
+
+@mixin copyFont($size, $weight){
+    font-family: 'Fira Sans Condensed', 'sans-serif';
+    font-weight: $weight;
+    font-size: $size;
+}
+
+@mixin titleFont($size, $weight){
+    font-family: 'Roboto Condensed', 'sans-serif';
+    font-weight: $weight;
+    font-size: $size;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    display: grid;
+    grid-template-areas: 
+    'header'
+    'main'
+    'footer'
+    ;
+}
+
+header{
+    grid-area: header;
+    @include titleFont(4.5rem, bolder);
+    padding-left: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: $dark-blue;
+    color: $white;
+}
+
+#main{
+    grid-area: main;
+    display: grid;
+    grid-template-areas: 
+    'nav view'
+    ;
+    grid-template-columns: 25vw 75vw;
+    //column-gap: 20rem;
+    height: 100vh;
+}
+
+
+#navigation{
+    grid-area: nav;
+    @include titleFont(2.25rem, inherit);
+    height: 100vh;
+    width: 25vw;
+    //overflow: scroll;
+    
+    #nav{
+        @include leftBox();
+        margin: 0rem;
+        gap: 0rem;
+        background-color: $light-blue;
+        height: 100vh;
+        //gap: 2rem;
+
+        .active-nav{
+            background-color: $dark-blue;
+        }
+    }
+
+    .sub-nav{
+        @include leftBox();
+        margin: 0rem;
+        gap: 0rem;
+        //gap: 1.5rem;
+
+        button{
+            @include titleFont(1.5rem, inherit);
+            border-style: none;
+            padding: 1rem 0.5rem;
+            border-radius: 0.1rem;
+            width: 25vw;
+            background-color: $blue;
+            opacity: 0.7;
+            color: $white;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            //border-radius: 0.5rem;
+
+        }
+
+        button:hover{
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        #nav-add-btn{
+            background-color: $red;
+            transition: background-color 0.5s;
+            opacity: 0.7;
+        }
+
+        #nav-add-btn:hover{
+            opacity: 1;
+        }
+
+    }
+
+
+    #nav-two{
+        padding-top: 1.5rem;
+        p{
+            padding-left: 1rem;
+            padding-bottom: 1.5rem;
+            color: $dark-blue;
+        }
+    }
+
+}
+
+#view{
+    grid-area: view;
+    @include leftBox();
+    @include copyFont(1rem, inherit);
+    // width: 40vw;
+    overflow: scroll;
+    height: 100vh;
+    background-color: $white;
+    margin: 0rem;
+    padding-left: 4.5rem;
+    padding-top: 1.5rem; 
+
+    .view-title{
+        @include titleFont(2.5rem, inherit);
+    }
+
+    .view{
+        @include leftBox();
+        @include copyFont(1rem, inherit);
+        // width: 40vw;
+        overflow: scroll;
+        gap: 1.5rem;
+    }  
+
+    .render-project{
+        @include leftBox();
+        gap: 1.5rem;
+    }
+
+    .existing-tasks, .progress-view{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .progress-title{
+        @include titleFont(1.5rem, bolder);
+    }
+
+}
+
+#footer{
+    a{
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        color: $dark-blue;
+        text-decoration: none;
+        font-size: 1.25rem;
+    }
+    bottom: 0;
+    margin: 0.5rem;
+    position: fixed;
+    @include titleFont(1.15rem, bold);
+    
+}
+
+.github-icon{
+    @include fa-icon-brands($fa-var-github);
+}
+
+#del-project-btn{
+    background-color: $red;
+    opacity: 0.8;
+    transition: background-color 0.5s;
+    color: $white;
+}
+
+#del-project-btn:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+.view-btn{
+    padding: 1.25rem 2.25rem;
+    border-radius: 0.5rem;
+    @include copyFont(1.25rem, inherit);
+    width: 100%;
+    background-color: #a3c9a8;
+    color: $white;
+    opacity: 0.8;
+}
+
+.view-btn:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
