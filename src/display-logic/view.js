@@ -1,4 +1,4 @@
-import { organizeTasks, setComplete, setInProgress,setPastDue, setToday, setNotStarted, setWeek } from '../app-logic/filter'
+import { organizeTasks, setComplete, setInProgress, setPastDue, setToday, setNotStarted, setWeek } from '../app-logic/filter'
 import { updateProjects, tasks as taskList } from '../app-logic/store'
 import { makeBtn, makeDiv, makePar } from '../tags'
 import { renderTask } from './renderTask'
@@ -17,11 +17,11 @@ export const todayView = () => {
 
     let todayTasks
     updateProjects();
-    setToday();
     if (localStorage['today-tasks']){
         todayTasks = JSON.parse(localStorage.getItem('today-tasks'));
         todayTasks = Array.from(todayTasks);
     } else if (localStorage.tasks){
+        setToday();
         todayTasks = JSON.parse(localStorage.getItem('today-tasks'))
         todayTasks = Array.from(todayTasks);
     } else return
@@ -52,12 +52,12 @@ export const weekView = () => {
 
     let weekTasks
     updateProjects();
-    setWeek();
 
     if (localStorage['week-tasks']){
         weekTasks = JSON.parse(localStorage.getItem('week-tasks'));
         weekTasks = Array.from(weekTasks);
     } else if (localStorage.tasks){
+        setWeek();
         weekTasks = JSON.parse(localStorage.getItem('week-tasks'))
         weekTasks = Array.from(weekTasks);
     } else return
@@ -84,14 +84,14 @@ export const pastDueView = () => {
     const addNew = makeBtn('view-btn', '+ Add New Task');
     const pastDueTitle = makePar('view-title');
     pastDueTitle.textContent = 'Past Due';
-
     let pastDueTasks
-    setPastDue();
+    
     updateProjects();
     if (localStorage['past-due-tasks']){
         pastDueTasks = JSON.parse(localStorage.getItem('past-due-tasks'));
         pastDueTasks = Array.from(pastDueTasks);
     } else if (localStorage.tasks){
+        setPastDue();
         pastDueTasks = JSON.parse(localStorage.getItem('past-due-tasks'));
         pastDueTasks = Array.from(pastDueTasks);
     } else return
@@ -127,12 +127,12 @@ export const progressView = () => {
     notStartedBox.appendChild(notStartedTitle);
 
     let notStartedTasks
-    setNotStarted()
     updateProjects()
     if (localStorage['not-started-tasks']){
         notStartedTasks = JSON.parse(localStorage.getItem('not-started-tasks'));
         notStartedTasks = Array.from(notStartedTasks);
     } else if (localStorage.tasks){
+        setNotStarted()
         notStartedTasks = JSON.parse(localStorage.getItem('not-started-tasks'))
         notStartedTasks = Array.from(notStartedTasks);
     } else return
@@ -149,12 +149,12 @@ export const progressView = () => {
     inProgressBox.appendChild(inProgressTitle);
 
     let inProgressTasks
-    setInProgress();
     updateProjects();
     if (localStorage['in-progress-tasks']){
         inProgressTasks = JSON.parse(localStorage.getItem('in-progress-tasks'));
         inProgressTasks = Array.from(inProgressTasks);
     } else if (localStorage.tasks){
+        setInProgress();
         inProgressTasks = JSON.parse(localStorage.getItem('in-progress-tasks'));
         inProgressTasks = Array.from(inProgressTasks);
     } else return
@@ -171,12 +171,12 @@ export const progressView = () => {
     completedBox.appendChild(completedTitle);
 
     let completedTasks
-    setComplete();
     updateProjects();
     if (localStorage['completed-tasks']){
         completedTasks = JSON.parse(localStorage.getItem('completed-tasks'));
         completedTasks = Array.from(completedTasks);
     } else if (localStorage.tasks){
+        setComplete();
         completedTasks = JSON.parse(localStorage.getItem('completed-tasks'));
         completedTasks = Array.from(completedTasks);
     } else {

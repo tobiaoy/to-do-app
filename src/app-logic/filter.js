@@ -1,6 +1,15 @@
 // filtering tasks based on time and progress
-import { compareAsc, isThisWeek, isToday, isPast, parseISO } from 'date-fns'
+import { compareAsc, isThisWeek, isToday, isPast} from 'date-fns';
 import { tasks as taskList } from "./store" 
+
+const formatDate = (s) => {
+    s = new Date(s);
+    s = s.toISOString();
+    s = s.replace('Z', '');
+    s = s.trim();
+    s = new Date(s);
+    return s;
+}
 
 // to organize tasks by time/date
 export const organizeTasks = (arr) => {
@@ -12,7 +21,7 @@ export const organizeTasks = (arr) => {
 // time based filters
 // this week's tasks
 export const setWeek = () => {
-    const getWeek = (task) => {return isThisWeek(new Date(task.dueDate))}
+    const getWeek = (task) => {return isThisWeek(formatDate(task.dueDate))}
     const getWeekTasks = (arr) => {return arr.filter(getWeek)}
 
     if (localStorage.tasks){
@@ -25,7 +34,7 @@ export const setWeek = () => {
 
 // today's tasks
 export const setToday = () => {
-    const getToday = (task) => {return isToday(new Date(task.dueDate))}
+    const getToday = (task) => {return isToday(formatDate(task.dueDate))}
     const getTodayTasks = (arr) => {return arr.filter(getToday)}
     
     if (localStorage.tasks){
@@ -38,7 +47,7 @@ export const setToday = () => {
 
 // tasks that are past due
 export const setPastDue = () => {
-    const getPastDue = (task) => {return isPast(new Date(task.dueDate))}
+    const getPastDue = (task) => {return isPast(formatDate(task.dueDate))}
     const getPastDueTasks = (arr) => {return arr.filter(getPastDue)}
 
     if (localStorage.tasks){

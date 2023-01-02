@@ -4,8 +4,6 @@ import { taskFactory } from "../app-logic/task"
 import { addToTasks, updateTasks, updateProjects, projects as projectList } from '../app-logic/store'
 import "../styles/forms.scss"
 import { updateView, isInPage } from "..";
-let isEditForm = false;
-export const setIsEditForm = (x) => { isEditForm = x }
 
 const makeTaskForm = () => {
 	const overlay = makeDiv('task-form-overlay', 'form-overlay');
@@ -80,16 +78,13 @@ const makeTaskForm = () => {
     submit.input.setAttribute('value', 'Confirm');
 
     form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!isEditForm){   
+        e.preventDefault(); 
         let task = taskFactory(nameDiv.children[1].value, descDiv.children[1].value, priorityDiv.children[1].value, dateDiv.children[1].value, progressDiv.children[1].value, projectDiv.children[1].value);
         addToTasks(task);
         updateTasks();
         updateProjects();
-    }
-    overlay.style.display = 'none';
-    updateView();
-
+        overlay.style.display = 'none';
+        updateView();
     })
 
     //cancel btn

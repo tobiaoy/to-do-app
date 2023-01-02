@@ -87,7 +87,6 @@ export const makeNav = () => {
     container.append(nav1, nav2);
 
     const getActiveNav = () => { 
-        console.log(activeNav);
         return activeNav; 
     }
 
