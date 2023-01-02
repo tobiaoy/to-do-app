@@ -68,7 +68,8 @@ export const createForm = () => {
     if (!isInPage(projectForm)){
         document.body.append(makeProjectForm());
     } else {
-        projectForm.style.display = 'flex';
+        projectForm.remove();
+        document.body.append(makeProjectForm(task));
     }    
 
 }

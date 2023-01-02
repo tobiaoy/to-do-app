@@ -110,6 +110,7 @@ export const createForm = () => {
     if (!isInPage(taskForm)){
         document.body.append(makeTaskForm());
     } else {
-        taskForm.style.display = 'flex';
+        taskForm.remove();
+        document.body.append(makeTaskForm());
     }
 }
