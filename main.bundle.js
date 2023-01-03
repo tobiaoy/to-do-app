@@ -970,15 +970,16 @@ if (localStorage.tasks) {
 
 if (localStorage.projects) {
   projects = JSON.parse(localStorage.getItem('projects'));
-  projects = Array.from(projects);
-} else {
-  projects = [];
 
   if (projects.length < 1) {
     var defaultProject = (0,_project__WEBPACK_IMPORTED_MODULE_1__.projectFactory)("Default");
     projects.push(defaultProject);
     updateProjects();
   }
+
+  projects = Array.from(projects);
+} else {
+  projects = [];
 } //manage tasks
 
 
