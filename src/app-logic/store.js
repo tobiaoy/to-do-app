@@ -18,8 +18,11 @@ if (localStorage.projects){
     projects = Array.from(projects);
 } else {
     projects = [];
-    let defaultProject = projectFactory("Default");
-    projects.push(defaultProject);
+    if (projects.length < 1){    
+        let defaultProject = projectFactory("Default");
+        projects.push(defaultProject);
+        updateProjects();
+    }
     
 }
 
