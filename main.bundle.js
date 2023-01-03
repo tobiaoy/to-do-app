@@ -973,8 +973,12 @@ if (localStorage.projects) {
   projects = Array.from(projects);
 } else {
   projects = [];
-  var defaultProject = (0,_project__WEBPACK_IMPORTED_MODULE_1__.projectFactory)("Default");
-  projects.push(defaultProject);
+
+  if (projects.length < 1) {
+    var defaultProject = (0,_project__WEBPACK_IMPORTED_MODULE_1__.projectFactory)("Default");
+    projects.push(defaultProject);
+    updateProjects();
+  }
 } //manage tasks
 
 
