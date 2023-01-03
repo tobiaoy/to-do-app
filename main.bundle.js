@@ -953,6 +953,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "updateTasks": () => (/* binding */ updateTasks)
 /* harmony export */ });
 /* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./filter */ "./src/app-logic/filter.js");
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project */ "./src/app-logic/project.js");
+
  // make these accessible from anywhere
 
 var tasks;
@@ -971,6 +973,8 @@ if (localStorage.projects) {
   projects = Array.from(projects);
 } else {
   projects = [];
+  var defaultProject = (0,_project__WEBPACK_IMPORTED_MODULE_1__.projectFactory)("Default");
+  projects.push(defaultProject);
 } //manage tasks
 
 
