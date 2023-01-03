@@ -1,38 +1,43 @@
-import { resolve } from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
-export const mode = 'development';
-export const optimization = {
-    minimizer: [new OptimizeCSSAssetsPlugin({})],
-};
-export const entry = resolve(__dirname, 'src/index.js');
-export const output = {
-    path: resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
-    clean: true,
-    assetModuleFilename: '[name][ext]'
-};
-export const plugins = [
-    new HtmlWebpackPlugin({
-        title: 'To-Do List',
-        filename: 'index.html',
-        template: 'src/template.html'
-    })
-];
-export const devtool = 'source-map';
-export const devServer = {
-    static: {
-        directory: resolve(__dirname, 'dist')
+module.exports = {
+    mode: 'development',
+    optimization: {
+        minimizer: [new OptimizeCSSAssetsPlugin({})],
     },
-    port: 3000,
-    open: true,
-    hot: true,
-    compress: true,
-    historyApiFallback: true
-};
-export const module = {
+    entry: path.resolve(__dirname, 'src/index.js'),
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js',
+        clean: true,
+        assetModuleFilename: '[name][ext]'
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'To-Do List',
+            filename: 'index.html',
+            template: 'src/template.html'
+        })
+    ],
+
+    devtool: 'source-map',
+
+    devServer: {
+        static: {
+            directory: path.resolve(__dirname, 'dist')
+        },
+        port: 3000,
+        open: true,
+        hot: true,
+        compress: true,
+        historyApiFallback: true
+    },
+
+   module: { 
     rules: [
         {
             test: /\.scss$/i,
@@ -57,16 +62,18 @@ export const module = {
         {
             test: /\.(woff|woff2|eot|ttf|otf)$/i,
             type: 'asset/resource',
-        },
+          },
 
         {
             test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
             use: {
-                loader: 'file-loader',
-                options: {
-                    name: '[path][name].[ext]',
-                },
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]',
+              },
             },
         },
+        
     ]
-};
+},
+}
