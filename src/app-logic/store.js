@@ -15,15 +15,14 @@ if (localStorage.tasks){
 //projects
 if (localStorage.projects){
     projects = JSON.parse(localStorage.getItem('projects'));
-    projects = Array.from(projects);
-} else {
-    projects = [];
     if (projects.length < 1){    
         let defaultProject = projectFactory("Default");
         projects.push(defaultProject);
         updateProjects();
     }
-    
+    projects = Array.from(projects);
+} else {
+    projects = [];
 }
 
 //manage tasks
