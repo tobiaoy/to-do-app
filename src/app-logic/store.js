@@ -1,4 +1,5 @@
 import {setComplete, setInProgress, setPastDue, setToday, setNotStarted, setWeek} from "./filter"
+import {projectFactory} from "./project"
 // make these accessible from anywhere
 export let tasks; 
 export let projects;
@@ -17,6 +18,9 @@ if (localStorage.projects){
     projects = Array.from(projects);
 } else {
     projects = [];
+    let defaultProject = projectFactory("Default");
+    projects.push(defaultProject);
+    
 }
 
 //manage tasks
